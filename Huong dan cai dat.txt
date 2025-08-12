@@ -1,0 +1,27 @@
+1. tạo cơ sở dữ liệu mới, sau đó import "upload_install.sql" vào.
+2. Config cấu hình csdl tại file _config.php
+
+define("db_host", "localhost");
+define("db_user", "root");
+define("db_pass", "");
+define("db_name", "upload_install");
+_____________________
+* Mật khẩu mặc định của tài khoản admin là: 12345 (đồi mật khẩu trực tiếp trong database nhé, mình chưa code đổi mật khẩu)
+
+
+3. Đề sử dụng chức năng gửi mail, đăng kí smtp rồi sửa lại cấu hình tại file _congfig.php
+
+$mailEmail = ""; //ví dụ: linkbattu@gmail.com
+$mailPass""; //mật khẩu SMTP
+
+4. Tập tin 8083.php là trình quản lý file Tiny File Manager
+- tài khoản và mật khẩu  mặc định là admin/12345
+* để thay đổi mật khẩu, truy cập https://tinyfilemanager.github.io/docs/pwd.html để đặt mật khẩu và copy sửa vào 'admin' => '$2y$10$Fg6Dz8oH9fPoZ2jJan5tZuv6Z4Kp7avtQ9bDfrdRntXtPeiMAZyGO' (sửa $2y$10$Fg6Dz8oH9fPoZ2jJan5tZuv6Z4Kp7avtQ9bDfrdRntXtPeiMAZyGO)
+
+/*
+Code viết bởi conmeodev
+Share vui lòng ghi rõ nguồn để tôn trọng tác giả
+link github: https://github.com/Conmeodev
+Liên hệ gmail: linkbattu@gmail.com
+
+*/
