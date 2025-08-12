@@ -1,0 +1,19 @@
+RewriteEngine On
+ErrorDocument 404 /
+
+RewriteRule ^views/(.*)$ index.php?index_file=$1 [QSA,L]
+RewriteRule ^ajax/(.*)$ models/$1 [QSA,L]
+
+RewriteRule ^folders/(.*)/(.*)$ index.php?index_file=main.php&getFolders=$2 [QSA,L]
+RewriteRule ^files/(.*)/(.*)$ index.php?index_file=files.php&getFiles=$2 [QSA,L]
+RewriteRule ^file/(.*)/(.*)$ index.php?index_file=files.php&getFiles=$2 [QSA,L]
+
+RewriteRule ^video/(.*)/(.*)$ index.php?index_file=files.php&getFiles=$2 [QSA,L]
+RewriteRule ^videos/(.*)/(.*)$ index.php?index_file=files.php&getFiles=$2 [QSA,L]
+RewriteRule ^image/(.*)/(.*)$ index.php?index_file=files.php&getFiles=$2 [QSA,L]
+RewriteRule ^images/(.*)/(.*)$ index.php?index_file=files.php&getFiles=$2 [QSA,L]
+RewriteRule ^views/search/(.*)$ index.php?index_file=search.php&getFiles=$1 [QSA,L]
+
+RewriteRule ^main.js$ asset/js/index.php
+
+
