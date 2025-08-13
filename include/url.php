@@ -9,6 +9,7 @@ $u_reg = "/views/reg.php#reg";
 $u_login = "/views/login.php#login";
 $u_active = "/views/active.php#active";
 $u_logout = "/views/logout.php";
+$u_change_pass = "/views/change_password.php";
 $u_search = "/views/search.php#search-tools";
 
 $u_panelFolders = "/views/folders.php";
@@ -20,4 +21,5 @@ $u_upload2_1 = "/ajax/upload2_1.php";
 $u_thumb = "/ajax/thumb.php";
 
 $u_love = '/views/lovefile.php';
+
 $u_allfile = '/views/allfile.php';
