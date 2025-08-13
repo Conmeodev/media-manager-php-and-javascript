@@ -80,6 +80,7 @@ if(!$admin){
 				<a class="nav-sub" href="<?php echo $u_login; ?>">Đăng Nhập</a>
 				<a class="nav-sub" href="<?php echo $u_reg; ?>">Đăng Ký</a>
 			<?php else: ?>
+				<a class="nav-sub" href="<?php echo $u_change_pass; ?>">Đổi Mật Khẩu</a>
 				<a class="nav-sub" href="<?php echo $u_logout; ?>">Đăng Xuất</a>
 			<?php endif; ?>
 		</div>
