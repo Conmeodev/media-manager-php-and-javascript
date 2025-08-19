@@ -80,7 +80,6 @@ if(!$admin){
 				<a class="nav-sub" href="<?php echo $u_login; ?>">Đăng Nhập</a>
 				<a class="nav-sub" href="<?php echo $u_reg; ?>">Đăng Ký</a>
 			<?php else: ?>
-				<a class="nav-sub" href="<?php echo $u_change_pass; ?>">Đổi Mật Khẩu</a>
 				<a class="nav-sub" href="<?php echo $u_logout; ?>">Đăng Xuất</a>
 			<?php endif; ?>
 		</div>
@@ -88,15 +87,22 @@ if(!$admin){
 	</div>
 
 	<div class="nav-tools menu">
+
 		<form action="<?php echo $u_search; ?>" method="POST" id="search-tools">
 			<input type="text" name="keysearch" placeholder="Từ khoá...">
 			<button>Tìm</button>
 		</form>
 		<hr>
-		<button onclick="doiTheme('sangne')">Sáng</button>
 		<button onclick="doiTheme('')">Tối</button>
+		<button onclick="doiTheme('sangne')">Sáng</button>
+		|
+		<button onclick="doiTheme('mauhong')">Hồng</button>
+		<button onclick="doiTheme('mauxanhla')">Xanh Lá</button>
+		<button onclick="doiTheme('mautrang')">Xám</button>
+		<button onclick="doiTheme('mautim')">Tím</button>
 		
 	</div>
+
 	<?php
 	if($admin) {?>
 		<div class="menu">
@@ -127,7 +133,8 @@ if(!$admin){
 
 	}
 	if($i_alert >0) {
-		echo "<div class='notication'>$alert</div>";
+		echo "<div class='notication'>$alert
+		</div>";
 	}
 	?>
 	<div class="menu">
@@ -147,7 +154,7 @@ if(!$admin){
 			?>
 		</div>
 	</div>
-	<div class="menu">
+	<!--div class="menu">
 		<div class="title">Mọi người vừa xem</div>
 		<div id="#files" class="block scroll-x">
 			<?php
@@ -167,4 +174,4 @@ if(!$admin){
 
 			?>
 		</div>
-	</div> 
+	</div--> 
