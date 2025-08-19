@@ -167,7 +167,9 @@
 }
 a { color: var(--primary-bg-color); }
 textarea::-webkit-scrollbar { display: none; }
-
+hr {
+  margin: 7px 0;
+}
 html {
   background: var(--main-gradient-bg);
   color: var(--color2);
