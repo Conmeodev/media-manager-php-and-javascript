@@ -224,7 +224,7 @@ header {
 
 .nav-list .nav-sub {
   display: inline-block;
-  color: var(--primary-bg-color);
+  color: var(--color2);
   background: var(--primary-02);
   border: 1px solid var(--primary-01);
   padding: 6px 10px;
@@ -415,7 +415,7 @@ footer:before,.menu:before, .container:before {
   width: 100%;
   padding: 6px 3px 1px 0px;
   text-align: left;
-  color: var(--yellow);
+  color: var(--text-secondary);
 }
 .list-name a {
     color: unset;
