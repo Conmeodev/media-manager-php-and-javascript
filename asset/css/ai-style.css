@@ -940,7 +940,7 @@ textarea {
 /* Windows Style Header */
 .v_header {
   padding: 8px 12px;
-  background: var(--text-secondary);
+  background: var(--primary09);
   display: flex;
   align-items: center;
   cursor: move;
