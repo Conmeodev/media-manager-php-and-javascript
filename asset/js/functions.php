@@ -1,3 +1,17 @@
+function doiTheme(themeName) {
+  const root = document.documentElement;
+  root.className = "";
+  if (themeName) {
+    root.classList.add(themeName);
+  }
+  localStorage.setItem("theme", themeName);
+}
+window.addEventListener("DOMContentLoaded", () => {
+  const theme = localStorage.getItem("theme");
+  if (theme) {
+    doiTheme(theme);
+  }
+});
 
 function htmlToBbcode(html)  {
     const searchReplace = [
@@ -71,3 +85,4 @@ function _size(size) {
         return (size / 1099511627776).toFixed(2) + ' TB';
     }
 }
+
