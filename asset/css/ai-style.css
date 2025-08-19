@@ -131,6 +131,277 @@
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
 }
+:root.mauhong {
+  /* Biến màu sắc chính - Phiên bản màu đỏ */
+  --background: rgba(255, 245, 245, 0.95);
+  --color: #4a2525;
+  --color2: rgba(90, 0, 0, 0.85);
+  --primary-rgb: 220, 53, 69;
+  --background-rgb: 255, 245, 245;
+  --secondary-rgb: 255, 193, 7;
+
+  /* Gradient và màu nền */
+  --main-gradient-bg: radial-gradient(circle, rgb(var(--background-rgb)) 0%, #fff5f5, #fff5f5 100%);
+  --primary-bg-color: rgb(var(--primary-rgb));
+  --primary-transparent: rgba(var(--primary-rgb), 0.2);
+
+  /* Các biến opacity */
+  --primary-01: rgba(var(--primary-rgb), 0.1);
+  --primary-02: rgba(var(--primary-rgb), 0.2);
+  --primary-03: rgba(var(--primary-rgb), 0.3);
+  --primary-05: rgba(var(--primary-rgb), 0.5);
+  --primary01: rgba(var(--primary-rgb), 0.1);
+  --primary02: rgba(var(--primary-rgb), 0.2);
+  --primary03: rgba(var(--primary-rgb), 0.3);
+  --primary04: rgba(var(--primary-rgb), 0.4);
+  --primary05: rgba(var(--primary-rgb), 0.5);
+  --primary06: rgba(var(--primary-rgb), 0.6);
+  --primary07: rgba(var(--primary-rgb), 0.7);
+  --primary08: rgba(var(--primary-rgb), 0.8);
+  --primary09: rgba(var(--primary-rgb), 0.9);
+  --primary005: rgba(var(--primary-rgb), 0.05);
+  --secondary-02: rgba(var(--secondary-rgb), 0.2);
+  --secondary-05: rgba(var(--secondary-rgb), 0.5);
+
+  /* Màu sắc theme */
+  --dark-body: #fff5f5;
+  --dark-theme: #ffffff;
+  --dark: #fed7d7;
+  --light: #ffffff;
+  --muted: #c53030;
+  --yellow: #f6ad55;
+
+  /* Gray scale - Phiên bản phù hợp với màu đỏ */
+  --gray-100: #fff5f5;
+  --gray-200: #fed7d7;
+  --gray-300: #feb2b2;
+  --gray-400: #fc8181;
+  --gray-500: #f56565;
+  --gray-600: #e53e3e;
+  --gray-700: #c53030;
+  --gray-800: #9b2c2c;
+  --gray-900: #742a2a;
+
+  /* Shadow và border */
+  --shadow: 0 4px 6px rgba(220, 53, 69, 0.15);
+  --card-background: rgba(255, 255, 255, 0.98);
+  --border: rgba(220, 53, 69, 0.3);
+
+  /* Các biến mới cho theme đỏ */
+  --text-primary: #9b2c2c;
+  --text-secondary: #c53030;
+  --accent-color: #f56565;
+  --success-color: #38a169;
+  --warning-color: #ecc94b;
+  --error-color: #e53e3e;
+  --info-color: #3182ce;
+
+  /* Breakpoints */
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 992px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+}
+/* Màu xanh lá */
+:root.mauxanhla {
+  /* Biến màu sắc chính - Phiên bản xanh lá */
+  --background: rgba(240, 255, 244, 0.95);
+  --color: #22543d;
+  --color2: rgba(0, 90, 30, 0.85);
+  --primary-rgb: 72, 187, 120;
+  --background-rgb: 240, 255, 244;
+  --secondary-rgb: 246, 173, 85;
+
+  /* Gradient và màu nền */
+  --main-gradient-bg: radial-gradient(circle, rgb(var(--background-rgb)) 0%, #f0fff4, #f0fff4 100%);
+  --primary-bg-color: rgb(var(--primary-rgb));
+  --primary-transparent: rgba(var(--primary-rgb), 0.2);
+
+  /* Các biến opacity */
+  --primary-01: rgba(var(--primary-rgb), 0.1);
+  --primary-02: rgba(var(--primary-rgb), 0.2);
+  --primary-03: rgba(var(--primary-rgb), 0.3);
+  --primary-05: rgba(var(--primary-rgb), 0.5);
+  --primary01: rgba(var(--primary-rgb), 0.1);
+  --primary02: rgba(var(--primary-rgb), 0.2);
+  --primary03: rgba(var(--primary-rgb), 0.3);
+  --primary04: rgba(var(--primary-rgb), 0.4);
+  --primary05: rgba(var(--primary-rgb), 0.5);
+  --primary06: rgba(var(--primary-rgb), 0.6);
+  --primary07: rgba(var(--primary-rgb), 0.7);
+  --primary08: rgba(var(--primary-rgb), 0.8);
+  --primary09: rgba(var(--primary-rgb), 0.9);
+  --primary005: rgba(var(--primary-rgb), 0.05);
+  --secondary-02: rgba(var(--secondary-rgb), 0.2);
+  --secondary-05: rgba(var(--secondary-rgb), 0.5);
+
+  /* Màu sắc theme */
+  --dark-body: #f0fff4;
+  --dark-theme: #ffffff;
+  --dark: #c6f6d5;
+  --light: #ffffff;
+  --muted: #38a169;
+  --yellow: #f6ad55;
+
+  /* Gray scale - Phiên bản phù hợp với màu xanh lá */
+  --gray-100: #f0fff4;
+  --gray-200: #c6f6d5;
+  --gray-300: #9ae6b4;
+  --gray-400: #68d391;
+  --gray-500: #48bb78;
+  --gray-600: #38a169;
+  --gray-700: #2f855a;
+  --gray-800: #276749;
+  --gray-900: #22543d;
+
+  /* Shadow và border */
+  --shadow: 0 4px 6px rgba(72, 187, 120, 0.15);
+  --card-background: rgba(255, 255, 255, 0.98);
+  --border: rgba(72, 187, 120, 0.3);
+
+  /* Các biến mới cho theme xanh lá */
+  --text-primary: #22543d;
+  --text-secondary: #2f855a;
+  --accent-color: #48bb78;
+  --success-color: #38a169;
+  --warning-color: #ecc94b;
+  --error-color: #e53e3e;
+  --info-color: #3182ce;
+}
+
+/* Màu tím */
+:root.mautim {
+  /* Biến màu sắc chính - Phiên bản tím */
+  --background: rgba(250, 245, 255, 0.95);
+  --color: #44337a;
+  --color2: rgba(70, 0, 110, 0.85);
+  --primary-rgb: 128, 90, 213;
+  --background-rgb: 250, 245, 255;
+  --secondary-rgb: 246, 173, 85;
+
+  /* Gradient và màu nền */
+  --main-gradient-bg: radial-gradient(circle, rgb(var(--background-rgb)) 0%, #faf5ff, #faf5ff 100%);
+  --primary-bg-color: rgb(var(--primary-rgb));
+  --primary-transparent: rgba(var(--primary-rgb), 0.2);
+
+  /* Các biến opacity */
+  --primary-01: rgba(var(--primary-rgb), 0.1);
+  --primary-02: rgba(var(--primary-rgb), 0.2);
+  --primary-03: rgba(var(--primary-rgb), 0.3);
+  --primary-05: rgba(var(--primary-rgb), 0.5);
+  --primary01: rgba(var(--primary-rgb), 0.1);
+  --primary02: rgba(var(--primary-rgb), 0.2);
+  --primary03: rgba(var(--primary-rgb), 0.3);
+  --primary04: rgba(var(--primary-rgb), 0.4);
+  --primary05: rgba(var(--primary-rgb), 0.5);
+  --primary06: rgba(var(--primary-rgb), 0.6);
+  --primary07: rgba(var(--primary-rgb), 0.7);
+  --primary08: rgba(var(--primary-rgb), 0.8);
+  --primary09: rgba(var(--primary-rgb), 0.9);
+  --primary005: rgba(var(--primary-rgb), 0.05);
+  --secondary-02: rgba(var(--secondary-rgb), 0.2);
+  --secondary-05: rgba(var(--secondary-rgb), 0.5);
+
+  /* Màu sắc theme */
+  --dark-body: #faf5ff;
+  --dark-theme: #ffffff;
+  --dark: #e9d8fd;
+  --light: #ffffff;
+  --muted: #805ad5;
+  --yellow: #f6ad55;
+
+  /* Gray scale - Phiên bản phù hợp với màu tím */
+  --gray-100: #faf5ff;
+  --gray-200: #e9d8fd;
+  --gray-300: #d6bcfa;
+  --gray-400: #b794f4;
+  --gray-500: #805ad5;
+  --gray-600: #6b46c1;
+  --gray-700: #553c9a;
+  --gray-800: #44337a;
+  --gray-900: #322659;
+
+  /* Shadow và border */
+  --shadow: 0 4px 6px rgba(128, 90, 213, 0.15);
+  --card-background: rgba(255, 255, 255, 0.98);
+  --border: rgba(128, 90, 213, 0.3);
+
+  /* Các biến mới cho theme tím */
+  --text-primary: #44337a;
+  --text-secondary: #553c9a;
+  --accent-color: #805ad5;
+  --success-color: #38a169;
+  --warning-color: #ecc94b;
+  --error-color: #e53e3e;
+  --info-color: #3182ce;
+}
+
+/* Màu trắng tinh khiết */
+:root.mautrang {
+  /* Biến màu sắc chính - Phiên bản trắng */
+  --background: rgba(255, 255, 255, 0.95);
+  --color: #2d3748;
+  --color2: rgba(0, 0, 0, 0.85);
+  --primary-rgb: 74, 85, 104;
+  --background-rgb: 255, 255, 255;
+  --secondary-rgb: 160, 174, 192;
+
+  /* Gradient và màu nền */
+  --main-gradient-bg: radial-gradient(circle, rgb(var(--background-rgb)) 0%, #ffffff, #ffffff 100%);
+  --primary-bg-color: rgb(var(--primary-rgb));
+  --primary-transparent: rgba(var(--primary-rgb), 0.2);
+
+  /* Các biến opacity */
+  --primary-01: rgba(var(--primary-rgb), 0.1);
+  --primary-02: rgba(var(--primary-rgb), 0.2);
+  --primary-03: rgba(var(--primary-rgb), 0.3);
+  --primary-05: rgba(var(--primary-rgb), 0.5);
+  --primary01: rgba(var(--primary-rgb), 0.1);
+  --primary02: rgba(var(--primary-rgb), 0.2);
+  --primary03: rgba(var(--primary-rgb), 0.3);
+  --primary04: rgba(var(--primary-rgb), 0.4);
+  --primary05: rgba(var(--primary-rgb), 0.5);
+  --primary06: rgba(var(--primary-rgb), 0.6);
+  --primary07: rgba(var(--primary-rgb), 0.7);
+  --primary08: rgba(var(--primary-rgb), 0.8);
+  --primary09: rgba(var(--primary-rgb), 0.9);
+  --primary005: rgba(var(--primary-rgb), 0.05);
+  --secondary-02: rgba(var(--secondary-rgb), 0.2);
+  --secondary-05: rgba(var(--secondary-rgb), 0.5);
+
+  /* Màu sắc theme */
+  --dark-body: #ffffff;
+  --dark-theme: #f7fafc;
+  --dark: #e2e8f0;
+  --light: #ffffff;
+  --muted: #a0aec0;
+  --yellow: #d69e2e;
+
+  /* Gray scale - Phiên bản trắng đen */
+  --gray-100: #f7fafc;
+  --gray-200: #edf2f7;
+  --gray-300: #e2e8f0;
+  --gray-400: #cbd5e0;
+  --gray-500: #a0aec0;
+  --gray-600: #718096;
+  --gray-700: #4a5568;
+  --gray-800: #2d3748;
+  --gray-900: #1a202c;
+
+  /* Shadow và border */
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --card-background: rgba(255, 255, 255, 0.98);
+  --border: rgba(0, 0, 0, 0.1);
+
+  /* Các biến mới cho theme trắng */
+  --text-primary: #2d3748;
+  --text-secondary: #4a5568;
+  --accent-color: #4a5568;
+  --success-color: #38a169;
+  --warning-color: #d69e2e;
+  --error-color: #e53e3e;
+  --info-color: #3182ce;
+}
 
 /* Reset và base styles */
 * {
@@ -255,6 +526,7 @@ button {
   border: 1px solid var(--primary-01);
   border-radius: 4px;
   cursor: pointer;
+  margin-bottom: 7px;
 }
 
 .notication, .menu {
@@ -400,7 +672,7 @@ footer:before,.menu:before, .container:before {
   position: absolute;
   top: 5px;
   left: 5px;
-  background: var(--primary04);
+  background: var(--gray-300);
   color: var(--gray-900);
   padding: 3px 6px;
   font-size: 12px;
@@ -559,8 +831,9 @@ footer {
 input[type="submit"] {padding: 5px 10px;background: var(--primary-transparent);color: var(--primary-bg-color);border: 1px solid var(--primary-01);border-radius: 4px;cursor: pointer;margin-top: 6px;}
 
 textarea {
-  height: 200px; 
-  max-height: 500px; 
+  height: 200px;
+  max-height: 500px;
+  padding: 1px 5px;
 }
 
 /* Utility classes */
@@ -667,7 +940,7 @@ textarea {
 /* Windows Style Header */
 .v_header {
   padding: 8px 12px;
-  background: var(--main-gradient-bg);
+  background: var(--text-secondary);
   display: flex;
   align-items: center;
   cursor: move;
