@@ -126,7 +126,7 @@ if(!$admin){
 		$alert .= '<div class="alert_box" data-nosnippet>'.$data_alert['_content'];
 		if($admin) {
 			$alert .= '<a href="'.$u_alert.'?act=edit&id='.$data_alert['id'].'#editthongbao" class="btn">sửa</a>';
-			$alert .= '<a href="'.$u_alert.'?act=delete&id='.$data_alert['id'].'#xoa" class="btn" style="background:red" onclick="return confirm(\'Bạn có chắc muốn xoá thông báo này không?\')">xoá</a>';
+			$alert .= '<a href="'.$u_alert.'?act=delete&id='.$data_alert['id'].'#xoa" class="btn" style="color:red" onclick="return confirm(\'Bạn có chắc muốn xoá thông báo này không?\')">xoá</a>';
 		}
 		$alert .= '</div><hr>';
 		$i_alert++;
