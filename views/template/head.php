@@ -88,11 +88,14 @@ if(!$admin){
 	</div>
 
 	<div class="nav-tools menu">
-
 		<form action="<?php echo $u_search; ?>" method="POST" id="search-tools">
 			<input type="text" name="keysearch" placeholder="Từ khoá...">
 			<button>Tìm</button>
 		</form>
+		<hr>
+		<button onclick="doiTheme('sangne')">Sáng</button>
+		<button onclick="doiTheme('')">Tối</button>
+		
 	</div>
 	<?php
 	if($admin) {?>
