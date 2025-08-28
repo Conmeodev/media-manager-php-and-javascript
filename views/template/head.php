@@ -93,7 +93,7 @@ if(!$admin){
 			<button>Tìm</button>
 		</form>
 		<hr>
-		<button onclick="doiTheme('')">Tối</button>
+		<button onclick="doiTheme('toi')">Tối</button>
 		<button onclick="doiTheme('sangne')">Sáng</button>
 		|
 		<button onclick="doiTheme('mauhong')">Hồng</button>
