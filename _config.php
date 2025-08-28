@@ -6,10 +6,7 @@ link github: https://github.com/Conmeodev
 Liên hệ gmail: linkbattu@gmail.com
 
 */
-define("db_host", "localhost");
-define("db_user", "root");
-define("db_pass", "");
-define("db_name", "upload_install");
+include_once '_db_config.php';
 $mailEmail = ""; //ví dụ: linkbattu@gmail.com
 $mailPass = ""; //mật khẩu SMTP
 
