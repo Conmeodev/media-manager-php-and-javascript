@@ -688,7 +688,7 @@ footer:before,.menu:before, .container:before {
   width: 100%;
   padding: 6px 3px 1px 0px;
   text-align: left;
-  color: var(--text-secondary);
+  color: var(--accent-color);
 }
 .list-name a {
     color: unset;
