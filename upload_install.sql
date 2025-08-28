@@ -204,7 +204,7 @@ CREATE TABLE `user` (
   `_cap` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT INTO `user` (`id`, `_taikhoan`, `_matkhau`, `_capdo`, `_mod`, `_email`, `_ip`, `_tinhtrang`, `_time`, `_mkh`, `_cap`) VALUES (NULL, 'admin', '12345', '10', NULL, 'admin@gmailcom', '127.0.0.1', 'dakichhoat', '1754991241', '84bfe1e60ce30d059fdb5ff2716925544ad0cf511fafe7fed61ff02d0488e8537680', 'cap')
+INSERT INTO `user` ( `_taikhoan`, `_matkhau`, `_capdo`, `_mod`, `_email`, `_ip`, `_tinhtrang`, `_time`, `_mkh`, `_cap`) VALUES ('admin', '12345', '10', NULL, 'admin@gmailcom', '127.0.0.1', 'dakichhoat', '1754991241', '84bfe1e60ce30d059fdb5ff2716925544ad0cf511fafe7fed61ff02d0488e8537680', 'cap');
 -- --------------------------------------------------------
 
 --
