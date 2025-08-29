@@ -61,6 +61,7 @@ if(!$admin){
 	<link rel="image_src" href="<?php echo $meta_thumb; ?>">
 	<link rel="icon" href="<?php echo $http.$domain; ?>/favicon.ico" type="image/x-icon"/>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/spark-md5/3.0.2/spark-md5.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js" ></script>
 </head>
 
 <body>
@@ -80,6 +81,7 @@ if(!$admin){
 				<a class="nav-sub" href="<?php echo $u_login; ?>">Đăng Nhập</a>
 				<a class="nav-sub" href="<?php echo $u_reg; ?>">Đăng Ký</a>
 			<?php else: ?>
+				<a class="nav-sub" href="<?php echo $u_change_pass; ?>">Đổi mật khẩu</a>
 				<a class="nav-sub" href="<?php echo $u_logout; ?>">Đăng Xuất</a>
 			<?php endif; ?>
 		</div>
