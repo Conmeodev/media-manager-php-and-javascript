@@ -519,6 +519,7 @@ input {
   color: var(--primary-bg-color);
 }
 
+
 button {
   padding: 5px 10px;
   background: var(--primary-transparent);
@@ -835,6 +836,13 @@ textarea {
   max-height: 500px;
   padding: 1px 5px;
 }
+.checkbox {
+
+}
+.checkbox input {
+  display: inline;
+  width: unset;
+}
 
 /* Utility classes */
 .btn {
@@ -1121,8 +1129,8 @@ select.menu {
   color: var(--dark-theme);
 }
 .succ {
-  background: var(--box-background-odd);
-  color: var(--primary-color);
+  background: var(--yellow);
+  color: var(--gray-200);
 }
 .form-alert.succ {
   background-color: #d4edda;
