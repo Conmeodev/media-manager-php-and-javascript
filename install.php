@@ -1,103 +1,6 @@
-
 <?php
-// Thiết lập biến và hàm kiểm tra
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-session_start();
-
-$step = isset($_GET['step']) ? (int)$_GET['step'] : 1;
-$error = '';
-$success = '';
-
-// Kiểm tra yêu cầu hệ thống
-function checkRequirements() {
-    $errors = [];
-    
-    // Kiểm tra phiên bản PHP
-    if (version_compare(PHP_VERSION, '8.2.0') < 0) {
-        $errors[] = "PHP phiên bản 8.2 hoặc cao hơn là bắt buộc. Phiên bản hiện tại: " . PHP_VERSION;
-    }
-    
-    // Kiểm tra file cài đặt
-    if (!file_exists('upload_install.sql')) {
-        $errors[] = "File upload_install.sql không tồn tại.";
-    }
-    
-    // Kiểm tra extension cần thiết
-    $required_extensions = ['pdo', 'pdo_mysql', 'gd'];
-    foreach ($required_extensions as $ext) {
-        if (!extension_loaded($ext)) {
-            $errors[] = "Extension $ext là bắt buộc nhưng chưa được cài đặt.";
-        }
-    }
-    
-    // Kiểm tra quyền ghi
-    if (!is_writable('.')) {
-        $errors[] = "Thư mục hiện tại không có quyền ghi. Vui lòng cấp quyền ghi.";
-    }
-    
-    return $errors;
-}
-
-// Xử lý form cài đặt
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['install'])) {
-    $db_host = $_POST['db_host'] ?? 'localhost';
-    $db_user = $_POST['db_user'] ?? '';
-    $db_pass = $_POST['db_pass'] ?? '';
-    $db_name = $_POST['db_name'] ?? '';
-    
-    try {
-        // Kết nối database
-        $dsn = "mysql:host=$db_host;charset=utf8mb4";
-        $options = [
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-            PDO::ATTR_EMULATE_PREPARES => false,
-        ];
-        $pdo = new PDO($dsn, $db_user, $db_pass, $options);
-        
-        // Tạo database nếu chưa tồn tại
-        $pdo->exec("CREATE DATABASE IF NOT EXISTS `$db_name` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci");
-        $pdo->exec("USE `$db_name`");
-        
-        // Import SQL file
-        $sql = file_get_contents('upload_install.sql');
-        if ($sql === false) {
-            throw new Exception("Không thể đọc file SQL.");
-        }
-        
-        // Thực thi các câu lệnh SQL
-        $pdo->exec($sql);
-        
-        // Tạo file cấu hình database
-        $config_content = "<?php\n";
-        $config_content .= "// Kết nối database\n";
-        $config_content .= "define('db_host', '$db_host');\n";
-        $config_content .= "define('db_user', '$db_user');\n";
-        $config_content .= "define('db_pass', '$db_pass');\n";
-        $config_content .= "define('db_name', '$db_name');\n\n";
-        $config_content .= "?>";
-        
-        if (file_put_contents('_db_config.php', $config_content) === false) {
-            throw new Exception("Không thể tạo file cấu hình database.");
-        }
-        
-        $_SESSION['installed'] = true;
-        $success = "Cài đặt thành công! Đang chuyển hướng...";
-        header("Refresh: 3; url=index.php");
-    } catch (Exception $e) {
-        $error = "Lỗi: " . $e->getMessage();
-    }
-}
-
-// Kiểm tra yêu cầu hệ thống
-$requirementErrors = checkRequirements();
-
-// Xác định xem có phải localhost không
-$is_localhost = in_array($_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1']) || 
-                strpos($_SERVER['HTTP_HOST'], 'localhost') !== false;
-?>
-<!DOCTYPE html>
+ob_start();
+?><!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
@@ -271,6 +174,12 @@ $is_localhost = in_array($_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1']) ||
             border: 1px solid #bbdefb;
         }
         
+        .alert-warning {
+            background: #fff8e1;
+            color: #ff8f00;
+            border: 1px solid #ffecb3;
+        }
+        
         .requirement-list {
             list-style-type: none;
         }
@@ -321,6 +230,17 @@ $is_localhost = in_array($_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1']) ||
             border-radius: 3px;
         }
         
+        .completed-container {
+            text-align: center;
+            padding: 40px 20px;
+        }
+        
+        .completed-icon {
+            font-size: 64px;
+            color: #2ecc71;
+            margin-bottom: 20px;
+        }
+        
         @media (max-width: 768px) {
             .container {
                 padding: 20px;
@@ -348,6 +268,126 @@ $is_localhost = in_array($_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1']) ||
     </style>
 </head>
 <body>
+    <?php
+    // Thiết lập biến và hàm kiểm tra
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+
+    // Không sử dụng session
+    // session_start();
+
+    // Kiểm tra yêu cầu hệ thống
+    function checkRequirements() {
+        $errors = [];
+        
+        // Kiểm tra phiên bản PHP
+        if (version_compare(PHP_VERSION, '8.2.0') < 0) {
+            $errors[] = "PHP phiên bản 8.2 hoặc cao hơn là bắt buộc. Phiên bản hiện tại: " . PHP_VERSION;
+        }
+        
+        // Kiểm tra file cài đặt
+        if (!file_exists('upload_install.sql')) {
+            $errors[] = "File upload_install.sql không tồn tại.";
+        }
+        
+        // Kiểm tra extension cần thiết
+        $required_extensions = ['pdo', 'pdo_mysql', 'gd'];
+        foreach ($required_extensions as $ext) {
+            if (!extension_loaded($ext)) {
+                $errors[] = "Extension $ext là bắt buộc nhưng chưa được cài đặt.";
+            }
+        }
+        
+        // Kiểm tra quyền ghi
+        if (!is_writable('.')) {
+            $errors[] = "Thư mục hiện tại không có quyền ghi. Vui lòng cấp quyền ghi.";
+        }
+        
+        return $errors;
+    }
+
+    // Kiểm tra xem đã cài đặt chưa bằng cách kiểm tra file _db_config.php
+    $config_file_exists = file_exists('_db_config.php');
+    
+    // Xác định step
+    $step = 1;
+    if (isset($_GET['step'])) {
+        $step = (int)$_GET['step'];
+    }
+    
+    // Nếu đã cài đặt, chuyển đến step 3
+    if ($config_file_exists && $step < 3) {
+        $step = 3;
+    }
+    
+    // Kiểm tra yêu cầu hệ thống
+    $requirementErrors = checkRequirements();
+    
+    // Xử lý form cài đặt
+    $error = '';
+    $success = '';
+    
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['install'])) {
+        $db_host = $_POST['db_host'] ?? 'localhost';
+        $db_user = $_POST['db_user'] ?? '';
+        $db_pass = $_POST['db_pass'] ?? '';
+        $db_name = $_POST['db_name'] ?? '';
+        
+        try {
+            // Kết nối MySQL
+            $dsn = "mysql:host=$db_host;charset=utf8mb4";
+            $options = [
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+                PDO::ATTR_EMULATE_PREPARES => false,
+            ];
+            $pdo = new PDO($dsn, $db_user, $db_pass, $options);
+            
+            // Kiểm tra database có tồn tại không
+            $stmt = $pdo->prepare("SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = ?");
+            $stmt->execute([$db_name]);
+            if ($stmt->rowCount() === 0) {
+                throw new Exception("Database '$db_name' không tồn tại. Vui lòng tạo thủ công trước khi cài đặt.");
+            }
+
+            // Chọn database
+            $pdo->exec("USE `$db_name`");
+
+            // Xóa tất cả bảng trước khi import
+            $pdo->exec("SET FOREIGN_KEY_CHECKS = 0");
+            $tables = $pdo->query("SHOW TABLES")->fetchAll(PDO::FETCH_COLUMN);
+            foreach ($tables as $table) {
+                $pdo->exec("DROP TABLE IF EXISTS `$table`");
+            }
+            $pdo->exec("SET FOREIGN_KEY_CHECKS = 1");
+
+            // Import dữ liệu từ file SQL
+            $sql = file_get_contents('upload_install.sql');
+            if ($sql === false) {
+                throw new Exception("Không thể đọc file SQL.");
+            }
+            $pdo->exec($sql);
+
+            // Ghi file cấu hình
+            $config_content = "<?php\n";
+            $config_content .= "define('db_host', '$db_host');\n";
+            $config_content .= "define('db_user', '$db_user');\n";
+            $config_content .= "define('db_pass', '$db_pass');\n";
+            $config_content .= "define('db_name', '$db_name');\n";
+            $config_content .= "?>";
+            
+            if (file_put_contents('_db_config.php', $config_content) === false) {
+                throw new Exception("Không thể tạo file cấu hình database.");
+            }
+
+            $success = "Cài đặt thành công!";
+            $step = 3;
+        } catch (Exception $e) {
+            $error = "Lỗi: " . $e->getMessage();
+        }
+    }
+    ?>
+    
     <div class="container">
         <h1>Cài Đặt Media Manager</h1>
         
@@ -373,7 +413,10 @@ $is_localhost = in_array($_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1']) ||
         <?php if ($success): ?>
             <div class="alert alert-success"><?php echo $success; ?></div>
         <?php endif; ?>
-        
+        <?php if(!empty($requirementErrors) && $step !=1){
+            header("Location: /install.php?step=1");
+            exit();
+        } ?>
         <?php if ($step == 1): ?>
             <div class="card">
                 <h2>Kiểm tra yêu cầu hệ thống</h2>
@@ -410,7 +453,8 @@ $is_localhost = in_array($_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1']) ||
                     </div>
                 <?php endif; ?>
             </div>
-        <?php elseif ($step == 2): ?>
+        <?php elseif ($step == 2 && !$config_file_exists): ?>
+
             <div class="card">
                 <h2>Cấu hình Database</h2>
                 <p>Vui lòng nhập thông tin kết nối database của bạn.</p>
@@ -436,24 +480,36 @@ $is_localhost = in_array($_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1']) ||
                         <input type="text" id="db_name" name="db_name" required>
                     </div>
                     
-                    <div class="alert alert-error">
+                    <div class="alert alert-warning">
                         <strong>Cảnh báo:</strong> Tất cả dữ liệu trong database sẽ bị xóa và thay thế bằng dữ liệu mới.
                     </div>
                     
                     <button type="submit" name="install" class="btn btn-block">Cài đặt ngay</button>
                 </form>
             </div>
-        <?php elseif ($step == 3): ?>
+        <?php elseif ($step == 3 || $config_file_exists): ?>
             <div class="card">
-                <h2>Cài đặt thành công!</h2>
-                <p>Media Manager đã được cài đặt thành công vào hệ thống của bạn.</p>
-                <p>File <code>_db_config.php</code> đã được tạo với thông tin kết nối database.</p>
-                <p>Tài khoản admin: admin/12345</p>
-                
-                <div class="alert alert-success">
-                    <strong>Lưu ý quan trọng:</strong> Vì lý do bảo mật, vui lòng xóa file install.php sau khi cài đặt.
+                <div class="completed-container">
+                    <div class="completed-icon">✓</div>
+                    <h2>Cài đặt thành công!</h2>
+                    <p>Tài Khoản quản trị: <b class="alert-error">admin</b>/<b class="alert-error">12345</b>, <i>Vui lòng thay đổi mật khẩu sau khi đăng nhập thành công</i></p>
+                    <p>Media Manager đã được cài đặt thành công vào hệ thống của bạn.</p>
+                    <p><a href="/index.php">Bấm vào đây</a> đề về trang chủ.</p>
+                    
+                    <div class="alert alert-info mt-20">
+                        <strong>Lưu ý quan trọng:</strong> Vì lý do bảo mật, vui lòng xóa file install.php sau khi cài đặt.
+                    </div>
+                    
+                    <?php if ($config_file_exists): ?>
+                        <div class="alert alert-warning mt-20">
+                            <strong>Ghi chú:</strong> Hệ thống đã phát hiện file cấu hình database tồn tại. 
+                            Nếu bạn muốn cài đặt lại, vui lòng xóa file <code>_db_config.php</code> trước.
+                        </div>
+                    <?php endif; ?>
                 </div>
             </div>
+            
+            
         <?php endif; ?>
     </div>
 </body>
