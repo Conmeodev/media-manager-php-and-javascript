@@ -6,6 +6,7 @@ link github: https://github.com/Conmeodev
 Liên hệ gmail: linkbattu@gmail.com
 
 */
+mysqli_report(MYSQLI_REPORT_OFF); 
 include_once '_db_config.php';
 $mailEmail = ""; //ví dụ: linkbattu@gmail.com
 $mailPass = ""; //mật khẩu SMTP
@@ -14,8 +15,7 @@ $ketnoi = mysqli_connect(db_host,db_user,db_pass,db_name);
 if($ketnoi) {
 	mysqli_set_charset($ketnoi,'utf8mb4');
 } else {
-	//header("location:/install");
-	echo "Ket noi csdl";
+	exit ('<meta name="viewport" content="width=device-width, initial-scale=1.0">Cấu hình database bị sai, vui lòng sửa lại tại file _db_config.php');
 }
 
 function _query($txt){
