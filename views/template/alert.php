@@ -14,7 +14,7 @@ $ok = 0;
 $alert_id = $_GET['id'] ?? null;
 $_get = $_GET['act'] ?? null;
 
-if($act="delete") {
+if($act=="delete") {
 	$delete = _query("DELETE FROM `alert` WHERE id='$alert_id'");
 	if($delete){
 		header("loaction:/");
@@ -138,3 +138,4 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 		?>
 	</div>
 </div>
+
